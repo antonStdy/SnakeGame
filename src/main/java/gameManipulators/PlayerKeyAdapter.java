@@ -6,12 +6,10 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class PlayerKeyAdapter extends KeyAdapter {
-    private PlayerActions initialAction;
     private PlayerActions currentAction;
     private boolean isGameStarted;
 
     public PlayerKeyAdapter(PlayerActions initialAction, boolean isGameStarted) {
-        this.initialAction = initialAction;
         this.currentAction = initialAction;
         this.isGameStarted = isGameStarted;
     }
@@ -46,16 +44,6 @@ public class PlayerKeyAdapter extends KeyAdapter {
 
     public void setGameStarted(boolean gameStarted) {
         isGameStarted = gameStarted;
-    }
-
-    private void handleGameControlAction(PlayerActions nextAction) {
-        if (!isGameStarted && nextAction == PlayerActions.START_GAME) {
-            if (currentAction != PlayerActions.START_GAME) {
-                currentAction = nextAction;
-            } else {
-                currentAction = initialAction;
-            }
-        }
     }
 
     private void handleMovementAction(PlayerActions nextAction) {
